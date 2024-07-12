@@ -23,7 +23,9 @@ Switch ($MENU)
 {
 1 {
 #OPTION1 - Check System Log For Reboot  
+$scriptPath = "$env:TEMP\Get-RebootShutdownLogs.ps1"
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Lohit-kk/Lohit-Scripts/main/Reboot.ps1" -OutFile $scriptPath
+& $scriptPath
 Break
 DisplayMenu
 }
