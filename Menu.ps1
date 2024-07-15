@@ -8,7 +8,7 @@ Write-Host @"
 +========================================================+
 |                                                        |
 |    1) System Log For Reboot                            |
-|    2) Application Log For Errors                       |
+|    2) AD Log Collector                      |
 |    3) Check Server Up Time & Events Start-Ending Dates |
 |    4) Exit                                             |
 |                                                        |
@@ -31,7 +31,12 @@ DisplayMenu
 }
 2 {
 #OPTION2 - Check Application Log Errors  
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/mujibur2024/Powershell-Script/main/applicationlog-1.2.ps1')
+Invoke-Command -ComputerName $remoteComputer -ScriptBlock {
+    param ($url)
+    $scriptPath = "$env:TEMP\Collect-ADReplicationLogs.ps1"
+    Invoke-WebRequest -Uri $url -OutFile $scriptPath
+    & $scriptPath
+} -ArgumentList $scriptUrl
 Break
 DisplayMenu
 }
