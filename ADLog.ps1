@@ -10,7 +10,7 @@ if (!(Test-Path "C:\Temp")) {
 
 # Collect repadmin /showrepl output
 Add-Content -Path $outputFile -Value "=== Repadmin /showrepl ==="
-repadmin /showrepl * /csv | Out-File -FilePath $outputFile -Append
+repadmin /showrepl | Out-File -FilePath $outputFile -Append
 
 # Collect repadmin /replsummary output
 Add-Content -Path $outputFile -Value "`n=== Repadmin /replsummary ==="
