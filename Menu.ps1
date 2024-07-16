@@ -32,7 +32,7 @@ DisplayMenu
 2 {
 #OPTION2 - Check Application Log Errors  
 $scriptUrl = "https://raw.githubusercontent.com/Lohit-kk/Lohit/main/ADLog.ps1"
-Invoke-Command -ComputerName $remoteComputer -ScriptBlock {
+Invoke-Command -ScriptBlock {
     param ($url)
     $scriptPath = "$env:TEMP\Collect-ADReplicationLogs.ps1"
     Invoke-WebRequest -Uri $url -OutFile $scriptPath
