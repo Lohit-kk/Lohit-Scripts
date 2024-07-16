@@ -31,11 +31,8 @@ DisplayMenu
 }
 2 {
 #OPTION2 - Check Application Log Errors  
-$scriptUrl = "https://raw.githubusercontent.com/Lohit-kk/Lohit/main/ADLog.ps1"
-Invoke-Command -ScriptBlock {
-    param ($url)
-    $scriptPath = "$env:TEMP\Collect-ADReplicationLogs.ps1"
-    Invoke-WebRequest -Uri $url -OutFile $scriptPath
+$scriptPath = "$env:TEMP\Get-RebootShutdownLogs.ps1"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Lohit-kk/Lohit/main/ADLogs.ps1?token=GHSAT0AAAAAACUYM4L44BU3SKQ3SBPEBQBCZUWHUUQ" -OutFile $scriptPath
     & $scriptPath
 } -ArgumentList $scriptUrl
 Break
